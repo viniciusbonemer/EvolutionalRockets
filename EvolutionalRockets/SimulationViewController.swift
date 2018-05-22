@@ -16,12 +16,14 @@ class SimulationViewController: UIViewController {
         
         if let view = self.view as! SKView? {
             
-            let scene = SimulationScene(size: view.bounds.size)
-            // Set the scale mode to scale to fit the window
-            scene.scaleMode = .aspectFill
-            
-            // Present the scene
-            view.presentScene(scene)
+//            let scene = SimulationScene(size: view.bounds.size)
+            if let scene = SKScene(fileNamed: "SimulationScene") {
+                // Set the scale mode to scale to fit the window
+                scene.scaleMode = .aspectFill
+                
+                // Present the scene
+                view.presentScene(scene)
+            }
             
             
             view.ignoresSiblingOrder = true

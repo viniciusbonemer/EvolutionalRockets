@@ -13,6 +13,18 @@
 		FB086A2E209BD23B00D26A69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB086A2C209BD23B00D26A69 /* Main.storyboard */; };
 		FB086A30209BD23C00D26A69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB086A2F209BD23C00D26A69 /* Assets.xcassets */; };
 		FB086A33209BD23C00D26A69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB086A31209BD23C00D26A69 /* LaunchScreen.storyboard */; };
+		FB086A3D209BE77000D26A69 /* DNAProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB086A3C209BE77000D26A69 /* DNAProtocol.swift */; };
+		FB086A3F209BE87200D26A69 /* IndividualProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB086A3E209BE87200D26A69 /* IndividualProtocol.swift */; };
+		FB086A41209BEA0100D26A69 /* PopulationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB086A40209BEA0100D26A69 /* PopulationProtocol.swift */; };
+		FB086A43209BEB6D00D26A69 /* DNA.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB086A42209BEB6D00D26A69 /* DNA.swift */; };
+		FB086A45209BF31900D26A69 /* Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB086A44209BF31900D26A69 /* Rocket.swift */; };
+		FB086A47209BF41500D26A69 /* Population.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB086A46209BF41500D26A69 /* Population.swift */; };
+		FB086A49209BF84400D26A69 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB086A48209BF84400D26A69 /* Helper.swift */; };
+		FB086A4E209BF9A400D26A69 /* BarrierNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB086A4D209BF9A400D26A69 /* BarrierNode.swift */; };
+		FB086A50209BFD8800D26A69 /* TargetNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB086A4F209BFD8800D26A69 /* TargetNode.swift */; };
+		FB086A52209BFF9800D26A69 /* RocketNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB086A51209BFF9800D26A69 /* RocketNode.swift */; };
+		FB086A54209C84A700D26A69 /* SimulationScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FB086A53209C84A700D26A69 /* SimulationScene.sks */; };
+		FBED38F420A0B9F7009CDF41 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBED38F320A0B9F7009CDF41 /* DrawingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +36,18 @@
 		FB086A2F209BD23C00D26A69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB086A32209BD23C00D26A69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB086A34209BD23C00D26A69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB086A3C209BE77000D26A69 /* DNAProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNAProtocol.swift; sourceTree = "<group>"; };
+		FB086A3E209BE87200D26A69 /* IndividualProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualProtocol.swift; sourceTree = "<group>"; };
+		FB086A40209BEA0100D26A69 /* PopulationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulationProtocol.swift; sourceTree = "<group>"; };
+		FB086A42209BEB6D00D26A69 /* DNA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNA.swift; sourceTree = "<group>"; };
+		FB086A44209BF31900D26A69 /* Rocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rocket.swift; sourceTree = "<group>"; };
+		FB086A46209BF41500D26A69 /* Population.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Population.swift; sourceTree = "<group>"; };
+		FB086A48209BF84400D26A69 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		FB086A4D209BF9A400D26A69 /* BarrierNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarrierNode.swift; sourceTree = "<group>"; };
+		FB086A4F209BFD8800D26A69 /* TargetNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetNode.swift; sourceTree = "<group>"; };
+		FB086A51209BFF9800D26A69 /* RocketNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketNode.swift; sourceTree = "<group>"; };
+		FB086A53209C84A700D26A69 /* SimulationScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SimulationScene.sks; sourceTree = "<group>"; };
+		FBED38F320A0B9F7009CDF41 /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +80,51 @@
 		FB086A21209BD23B00D26A69 /* EvolutionalRockets */ = {
 			isa = PBXGroup;
 			children = (
-				FB086A22209BD23B00D26A69 /* AppDelegate.swift */,
+				FB086A4A209BF92E00D26A69 /* Nodes */,
+				FB086A3B209BE75B00D26A69 /* Models */,
+				FB086A3A209BE75100D26A69 /* Protocols */,
 				FB086A28209BD23B00D26A69 /* SimulationScene.swift */,
-				FB086A2A209BD23B00D26A69 /* SimulationViewController.swift */,
-				FB086A2C209BD23B00D26A69 /* Main.storyboard */,
+				FB086A48209BF84400D26A69 /* Helper.swift */,
+				FB086A53209C84A700D26A69 /* SimulationScene.sks */,
 				FB086A2F209BD23C00D26A69 /* Assets.xcassets */,
+				FB086A2C209BD23B00D26A69 /* Main.storyboard */,
 				FB086A31209BD23C00D26A69 /* LaunchScreen.storyboard */,
+				FB086A22209BD23B00D26A69 /* AppDelegate.swift */,
+				FB086A2A209BD23B00D26A69 /* SimulationViewController.swift */,
+				FBED38F320A0B9F7009CDF41 /* DrawingView.swift */,
 				FB086A34209BD23C00D26A69 /* Info.plist */,
 			);
 			path = EvolutionalRockets;
+			sourceTree = "<group>";
+		};
+		FB086A3A209BE75100D26A69 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FB086A3C209BE77000D26A69 /* DNAProtocol.swift */,
+				FB086A3E209BE87200D26A69 /* IndividualProtocol.swift */,
+				FB086A40209BEA0100D26A69 /* PopulationProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		FB086A3B209BE75B00D26A69 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FB086A42209BEB6D00D26A69 /* DNA.swift */,
+				FB086A44209BF31900D26A69 /* Rocket.swift */,
+				FB086A46209BF41500D26A69 /* Population.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FB086A4A209BF92E00D26A69 /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				FB086A4D209BF9A400D26A69 /* BarrierNode.swift */,
+				FB086A4F209BFD8800D26A69 /* TargetNode.swift */,
+				FB086A51209BFF9800D26A69 /* RocketNode.swift */,
+			);
+			path = Nodes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB086A2E209BD23B00D26A69 /* Main.storyboard in Resources */,
+				FB086A54209C84A700D26A69 /* SimulationScene.sks in Resources */,
 				FB086A30209BD23C00D26A69 /* Assets.xcassets in Resources */,
 				FB086A33209BD23C00D26A69 /* LaunchScreen.storyboard in Resources */,
 			);
@@ -137,9 +198,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB086A47209BF41500D26A69 /* Population.swift in Sources */,
 				FB086A29209BD23B00D26A69 /* SimulationScene.swift in Sources */,
+				FB086A3F209BE87200D26A69 /* IndividualProtocol.swift in Sources */,
+				FB086A4E209BF9A400D26A69 /* BarrierNode.swift in Sources */,
+				FB086A50209BFD8800D26A69 /* TargetNode.swift in Sources */,
+				FB086A3D209BE77000D26A69 /* DNAProtocol.swift in Sources */,
+				FB086A43209BEB6D00D26A69 /* DNA.swift in Sources */,
+				FBED38F420A0B9F7009CDF41 /* DrawingView.swift in Sources */,
+				FB086A52209BFF9800D26A69 /* RocketNode.swift in Sources */,
 				FB086A2B209BD23B00D26A69 /* SimulationViewController.swift in Sources */,
+				FB086A41209BEA0100D26A69 /* PopulationProtocol.swift in Sources */,
+				FB086A49209BF84400D26A69 /* Helper.swift in Sources */,
 				FB086A23209BD23B00D26A69 /* AppDelegate.swift in Sources */,
+				FB086A45209BF31900D26A69 /* Rocket.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
