@@ -7,22 +7,28 @@
 
 import Foundation
 
-class Rocket: IndividualProtocol {
+final class Rocket: IndividualProtocol {
     
-    var dna: DNAProtocol
-    
+    // MARK: Properties
+
+    var dna: DNA
+
     var fitness: Double = 0
+
+    // MARK: - Initialization
     
     init() {
         self.dna = DNA()
     }
-    
+
     init(with dna: DNA) {
         self.dna = dna
     }
     
-    func makeDescendant(with other: IndividualProtocol) -> IndividualProtocol {
-        let newDNA = self.dna.crossover(with: other.dna) as! DNA
+    // MARK: - Methods
+
+    func makeDescendant(with other: Rocket) -> Rocket {
+        let newDNA = self.dna.crossover(with: other.dna)
         return Rocket(with: newDNA)
     }
 }

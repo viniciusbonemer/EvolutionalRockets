@@ -19,8 +19,6 @@ struct Random {
         var dy = drand48()
         dx *= drand48() > 0.5 ? 10 : -10
         dy *= drand48() > 0.5 ? 10 : -10
-//        if Random.value(upTo: 2) > 1 { dx *= -1}
-//        if Random.value(upTo: 2) > 1 { dy *= -1}
         return CGVector(dx: dx, dy: dy)
     }
 }

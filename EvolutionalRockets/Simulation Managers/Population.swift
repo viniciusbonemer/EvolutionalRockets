@@ -7,13 +7,15 @@
 
 import Foundation
 
-class Population {
+class Population: PopulationProtocol {
     
+    // MARK: - Properties
     
-    var population: [RocketNode]
+    var individuals: [RocketNode]
     
-    var size: Int
+    let size: Int
     
+    // MARK: - Initialization
     
     convenience init() {
         self.init(of: 100)
@@ -22,38 +24,43 @@ class Population {
     
     init(of size: Int) {
         self.size = size
-        population = [RocketNode]()
+        individuals = [RocketNode]()
         for _ in 0..<size {
-            population.append(RocketNode())
+            individuals.append(RocketNode())
         }
     }
     
     init(from array: [RocketNode]) {
         self.size = array.count
-        population = array
+        individuals = array
     }
     
     
     deinit {
-        for _ in population {
-            let rocket = population.remove(at: 0)
+        for _ in individuals {
+            let rocket = individuals.remove(at: 0)
             rocket.removeAllActions()
             rocket.removeFromParent()
         }
     }
     
+    // MARK: - Subscript
+    
     
     subscript(_ index: Int) -> RocketNode {
         get {
-            return population[index]
+            return individuals[index]
         }
         set {
-            population[index] = newValue
+            individuals[index] = newValue
         }
     }
     
+    
+    // MARK: - Methods
+    
     func simulate() {
-        for rocket in population {
+        for rocket in individuals {
             if !rocket.didCrash, !rocket.didReachTarget {
                 rocket.executeDNA()
             }
@@ -62,9 +69,9 @@ class Population {
     
     
     func calculateFitness(target: TargetNode) {
-        for rocket in population {
+        for rocket in individuals {
             rocket.evaluateFitness(target: target)
         }
     }
-    
 }
+

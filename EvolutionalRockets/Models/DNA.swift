@@ -9,17 +9,13 @@ import Foundation
 
 struct DNA: DNAProtocol {
     
+    // MARK: - Properties
+    
     static var mutationRate = 0.01
     
-    static var length: Int = 300
+    static let length: Int = 300
     
-    static var maxValue: Int = 5 {
-        didSet {
-            if maxValue <= 0 {
-                maxValue = 1
-            }
-        }
-    }
+    static let maxValue: Int = 5
     
     var genes: [Int] = {
         var information = [Int]()
@@ -30,6 +26,7 @@ struct DNA: DNAProtocol {
         return information
     }()
     
+    // MARK: - Initialization
     
     init() { }
     
@@ -40,16 +37,16 @@ struct DNA: DNAProtocol {
             information.max()! < DNA.maxValue {
             genes = information
         } else {
-            print("error with genes")
+            print("Error with provided genes. Random values are beeing used instead. ")
         }
     }
     
+    // MARK: - Methods
     
-    func crossover(with other: DNAProtocol) -> DNAProtocol {
+    func crossover(with other: DNA) -> DNA {
         
         var newDNAInformation = [Int]()
         let randomIndex = Random.value(upTo: DNA.length)
-//        print("CROSSOVER POINT: \(randomIndex)")
         for index in 0..<DNA.length {
             if index < randomIndex {
                 newDNAInformation.append(self.genes[index])
@@ -60,12 +57,24 @@ struct DNA: DNAProtocol {
         return DNA(from: newDNAInformation)
     }
     
+    
     mutating func mutate() {
         let randomIndex = Random.value(upTo: DNA.length)
         if drand48() < DNA.mutationRate {
             let randomGene = Random.value(upTo: DNA.maxValue)
             genes[randomIndex] = randomGene
-            print("MUTATION!")
+        }
+    }
+    
+    
+    // MARK: - Subscript
+    
+    subscript(index: Int) -> Int {
+        get {
+            return genes[index]
+        }
+        set {
+            genes[index] = newValue
         }
     }
 }

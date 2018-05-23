@@ -10,7 +10,6 @@ import SpriteKit
 
 class BarrierNode: SKSpriteNode {
     
-    
     convenience init() {
         let size = CGSize(width: 100, height: 100)
         self.init(with: size)

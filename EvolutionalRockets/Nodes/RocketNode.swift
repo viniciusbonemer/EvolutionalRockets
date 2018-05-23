@@ -8,7 +8,9 @@
 import Foundation
 import SpriteKit
 
-class RocketNode: SKSpriteNode {
+final class RocketNode: SKSpriteNode {
+    
+    // MARK: - Properties
     
     var model: Rocket = Rocket()
     
@@ -24,6 +26,8 @@ class RocketNode: SKSpriteNode {
     
     lazy var reference: SKNode = (self.parent?.childNode(withName: "referenceNode"))!
     
+    // MARK: - Initialization
+    
     init() {
         let size = CGSize(width: 10, height: 50)
         super.init(texture: nil, color: .white, size: size)
@@ -36,7 +40,7 @@ class RocketNode: SKSpriteNode {
         physicsBody?.linearDamping = 0.6
     }
     
-    convenience init(model: Rocket) {
+    convenience init(from model: Rocket) {
         self.init()
         self.model = model
     }
@@ -51,6 +55,8 @@ class RocketNode: SKSpriteNode {
         self.removeFromParent()
     }
     
+    
+    // MARK: - Methods
     
     func evaluateFitness(target: TargetNode) {
         let distanceToTarget = didReachTarget ? 0 : self.position.distance(to: target.position)
@@ -69,7 +75,7 @@ class RocketNode: SKSpriteNode {
     
     
     func executeDNA() {
-        guard currentGene < model.dna.genes.count else { print("big gene"); return }
+        guard currentGene < model.dna.genes.count else { return }
         guard !finished else { return }
         guard !didCrash, !didReachTarget else { return }
         
@@ -86,4 +92,40 @@ class RocketNode: SKSpriteNode {
             }
         }
     }
+}
+
+
+extension RocketNode: IndividualProtocol {
+    
+    
+    var dna: DNA {
+        get {
+            return model.dna
+        }
+        set {
+            model.dna = newValue
+        }
+    }
+    
+    var fitness: Double {
+        get {
+            return model.fitness
+        }
+        set {
+            model.fitness = newValue
+        }
+    }
+    
+    
+    convenience init(with dna: DNA) {
+        self.init(from: Rocket(with: dna))
+    }
+    
+    
+    func makeDescendant(with other: RocketNode) -> RocketNode {
+        let newDNA = self.dna.crossover(with: other.dna)
+        return RocketNode(from: Rocket(with: newDNA))
+    }
+    
+    
 }

@@ -9,9 +9,13 @@ import Foundation
 
 protocol DNAProtocol {
     
-    var genes: [Int] { get set }
+    associatedtype Gene
     
-    func crossover(with other: DNAProtocol) -> DNAProtocol
+    var genes: [Gene] { get set }
+    
+    func crossover(with other: Self) -> Self
     
     mutating func mutate()
+    
+    subscript(index: Int) -> Gene { get set }
 }

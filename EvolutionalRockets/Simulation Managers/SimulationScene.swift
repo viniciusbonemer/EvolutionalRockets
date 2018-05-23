@@ -10,6 +10,8 @@ import GameplayKit
 
 class SimulationScene: SKScene {
     
+    // MARK: - Properties
+    
     var label: SKLabelNode = {
         let l = SKLabelNode(text: "1")
         l.position = CGPoint(x: 320, y: 300)
@@ -31,8 +33,9 @@ class SimulationScene: SKScene {
     var currentCycle = 0
     
     var target = TargetNode()
-//    var barrier = BarrierNode()
     
+    
+    // MARK: - Methods
     
     override func sceneDidLoad() {
         physicsWorld.gravity = CGVector.zero
@@ -50,12 +53,10 @@ class SimulationScene: SKScene {
         drawingView.backgroundColor = .clear
         view.addSubview(drawingView)
         
-//        target = childNode(withName: "target") as! TargetNode
         rocketLaucher = childNode(withName: "rocketLauncher")
-//        barrier = childNode(withName: "centralBarrier") as! BarrierNode
-        lifespan = population.population.first!.model.dna.genes.count
+        lifespan = DNA.length
         
-        for rocket in population.population {
+        for rocket in population.individuals {
             rocket.position = rocketLaucher.position
             addChild(rocket)
         }
@@ -63,16 +64,15 @@ class SimulationScene: SKScene {
     
     
     func fillMattingPool() {
-        var maxFitness = population.population[0].model.fitness
-        for rocket in population.population {
+        var maxFitness = population[0].model.fitness
+        for rocket in population.individuals {
             if rocket.model.fitness > maxFitness {
                 maxFitness = rocket.model.fitness
             }
         }
         var sum = 0
-        for rocket in population.population {
+        for rocket in population.individuals {
             rocket.model.fitness /= maxFitness
-//            print(rocket.model.fitness)
             let count = Int(rocket.model.fitness * 1000)
             sum += count
             print(count)
@@ -83,43 +83,31 @@ class SimulationScene: SKScene {
             drawTrajectory(of: rocket)
         }
         drawingView.setNeedsDisplay()
-        print("Max Fitness: \(maxFitness)")
-        print("Average count: \(sum/population.population.count)")
-        print("Mating pool size: \(matingPool.count)")
     }
     
     
     func drawTrajectory(of rocket: RocketNode) {
         let trajectory = rocket.trajectory
-        guard !trajectory.isEmpty else { print("NO stroke");return }
-//        guard drand48() > 0.5 else { return }
-//        UIGraphicsGetCurrentContext()
-//        let pathColor = UIColor(red: 46, green: 0, blue: 127, alpha: 0.01)
-//        let path = SKShapeNode(path: trajectory.cgPath)
-//        path.lineWidth = 1
-//        path.strokeColor = pathColor
-//        path.alpha = 0.01
-//        addChild(path)
+        guard !trajectory.isEmpty else { return }
         drawingView.paths.append(trajectory)
-        print("stroke")
     }
     
     
     func performSelection() {
-        var newPopulation = [RocketNode]()
-        for _ in 0..<population.population.count {
+        var newIndividuals = [RocketNode]()
+        for _ in 0..<population.individuals.count {
             let indexA = Random.value(upTo: matingPool.count)
             let indexB = Random.value(upTo: matingPool.count)
             
             let parentA = matingPool[indexA]
             let parentB = matingPool[indexB]
             
-            let childModel = parentA.makeDescendant(with: parentB) as! Rocket
-            let child = RocketNode(model: childModel)
-            newPopulation.append(child)
+            let childModel = parentA.makeDescendant(with: parentB)
+            let child = RocketNode(from: childModel)
+            newIndividuals.append(child)
         }
-        population = Population(from: newPopulation)
-        for rocket in population.population {
+        population = Population(from: newIndividuals)
+        for rocket in population.individuals {
             rocket.position = rocketLaucher.position
             addChild(rocket)
         }
@@ -133,7 +121,6 @@ class SimulationScene: SKScene {
             population.calculateFitness(target: target)
             fillMattingPool()
             performSelection()
-//            clearLines()
             currentCycle = 0
             return
         }
@@ -142,41 +129,31 @@ class SimulationScene: SKScene {
         currentCycle += 1
         label2.text = String(currentCycle)
     }
-    
-//    func clearLines() {
-//        if lines.count > 100 {
-//            for _ in 0..<50 {
-//                let line = lines.remove(at: 0)
-//                line.removeFromParent()
-//            }
-//        }
-//    }
 }
 
 extension SimulationScene: SKPhysicsContactDelegate {
     
+    struct UnsovableContact: Error {
+        var localizedDescription: String = "The types involved are not the required ones"
+    }
+    
     
     func didBegin(_ contact: SKPhysicsContact) {
         
-        let rocket: RocketNode
-        let other: SKNode
-        if contact.bodyA.node is RocketNode {
-            rocket = contact.bodyA.node as! RocketNode
-            other = contact.bodyB.node!
-        } else if contact.bodyB.node is RocketNode {
-            rocket = contact.bodyB.node as! RocketNode
-            other = contact.bodyA.node!
-        } else {
-            return
-        }
+        var rocket = RocketNode()
+        var other = SKNode()
         
+        do {
+            try solveContact(contact, rocket: &rocket, other: &other)
+        } catch {
+            print(error)
+        }
+            
         switch other {
         case is TargetNode:
             rocket.didReachTarget = true
-//            print("TARGET HIT")
         case is BarrierNode:
             rocket.didCrash = true
-//            print("HIT BARRIER")
         default:
             break
         }
@@ -185,10 +162,15 @@ extension SimulationScene: SKPhysicsContactDelegate {
         rocket.finished = true
     }
     
-//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        if let touch = touches.first {
-//            let location = touch.location(in: self)
-//            barrier.position = location
-//        }
-//    }
+    func solveContact(_ contact: SKPhysicsContact, rocket: inout RocketNode, other: inout SKNode) throws {
+        if contact.bodyA.node is RocketNode {
+            rocket = contact.bodyA.node as! RocketNode
+            other = contact.bodyB.node!
+        } else if contact.bodyB.node is RocketNode {
+            rocket = contact.bodyB.node as! RocketNode
+            other = contact.bodyA.node!
+        } else {
+            throw UnsovableContact()
+        }
+    }
 }

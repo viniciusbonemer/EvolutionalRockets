@@ -8,8 +8,11 @@
 import Foundation
 
 protocol  PopulationProtocol {
-    var population: [IndividualProtocol] { get set }
+    
+    associatedtype Individual: IndividualProtocol
+    
+    var individuals: [Individual] { get set }
     var size: Int { get }
     
-    subscript (_: Int) -> IndividualProtocol { get set }
+    subscript (_: Int) -> Individual { get set }
 }

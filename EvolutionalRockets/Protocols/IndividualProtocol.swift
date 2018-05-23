@@ -9,8 +9,10 @@ import Foundation
 
 protocol IndividualProtocol {
     
-    var dna: DNAProtocol { get set }
+    associatedtype DNA: DNAProtocol
+    
+    var dna: DNA { get set }
     var fitness: Double { get set }
     
-    func makeDescendant(with other: IndividualProtocol) -> IndividualProtocol
+    func makeDescendant(with other: Self) -> Self
 }

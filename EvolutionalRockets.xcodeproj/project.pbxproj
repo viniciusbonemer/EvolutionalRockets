@@ -80,10 +80,10 @@
 		FB086A21209BD23B00D26A69 /* EvolutionalRockets */ = {
 			isa = PBXGroup;
 			children = (
+				FB9D971B20B5D564007ECD96 /* Simulation Managers */,
 				FB086A4A209BF92E00D26A69 /* Nodes */,
 				FB086A3B209BE75B00D26A69 /* Models */,
 				FB086A3A209BE75100D26A69 /* Protocols */,
-				FB086A28209BD23B00D26A69 /* SimulationScene.swift */,
 				FB086A48209BF84400D26A69 /* Helper.swift */,
 				FB086A53209C84A700D26A69 /* SimulationScene.sks */,
 				FB086A2F209BD23C00D26A69 /* Assets.xcassets */,
@@ -112,7 +112,6 @@
 			children = (
 				FB086A42209BEB6D00D26A69 /* DNA.swift */,
 				FB086A44209BF31900D26A69 /* Rocket.swift */,
-				FB086A46209BF41500D26A69 /* Population.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -125,6 +124,15 @@
 				FB086A51209BFF9800D26A69 /* RocketNode.swift */,
 			);
 			path = Nodes;
+			sourceTree = "<group>";
+		};
+		FB9D971B20B5D564007ECD96 /* Simulation Managers */ = {
+			isa = PBXGroup;
+			children = (
+				FB086A28209BD23B00D26A69 /* SimulationScene.swift */,
+				FB086A46209BF41500D26A69 /* Population.swift */,
+			);
+			path = "Simulation Managers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
